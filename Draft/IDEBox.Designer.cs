@@ -46,6 +46,7 @@
             this.CharWidth = 9;
             this.CurrentLineColor = System.Drawing.Color.Black;
             this.Font = new System.Drawing.Font("Courier New", 11.25F);
+            this.IndentBackColor = System.Drawing.Color.Gainsboro;
             this.Language = FastColoredTextBoxNS.Language.CSharp;
             this.LeftBracket = '(';
             this.LeftBracket2 = '{';
@@ -55,6 +56,7 @@
             this.Paddings = new System.Windows.Forms.Padding(5);
             this.RightBracket = ')';
             this.RightBracket2 = '}';
+            this.ServiceLinesColor = System.Drawing.Color.Gainsboro;
             this.Size = new System.Drawing.Size(539, 346);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);

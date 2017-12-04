@@ -118,21 +118,9 @@ namespace Draft
         {
             if (e.Control)
             {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    MainForm.activeForm.commandBar.textField.Focus();
-                }
                 if (e.KeyCode == Keys.S)
                 {
                     this.save();
-                }
-                if (e.KeyCode == Keys.O)
-                {
-                    MainForm.fileManager.loadFile();
-                }
-                else if (e.KeyCode == Keys.ControlKey)
-                {
-                    // only Ctrl here
                 }
             }
             else if (e.KeyCode == Keys.Enter)

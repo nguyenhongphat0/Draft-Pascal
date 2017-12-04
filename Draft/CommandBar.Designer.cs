@@ -39,7 +39,7 @@
             this.textField.ForeColor = System.Drawing.Color.White;
             this.textField.Location = new System.Drawing.Point(20, 10);
             this.textField.Name = "textField";
-            this.textField.Size = new System.Drawing.Size(200, 18);
+            this.textField.Size = new System.Drawing.Size(264, 18);
             this.textField.TabIndex = 4;
             this.textField.Text = "do something (Ctrl+Enter) ...";
             this.textField.Enter += new System.EventHandler(this.textField_Enter);
@@ -52,7 +52,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.Controls.Add(this.textField);
             this.Name = "CommandBar";
-            this.Size = new System.Drawing.Size(240, 40);
+            this.Size = new System.Drawing.Size(300, 40);
             this.ResumeLayout(false);
             this.PerformLayout();
 

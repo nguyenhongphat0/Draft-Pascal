@@ -16,6 +16,8 @@ namespace Draft
 
         public CommandBar commandBar;
         public MaterialSkinManager skinManager;
+        public ConsoleBox inputBox;
+        public ConsoleBox outputBox;
 
 		public MainForm()
 		{
@@ -59,7 +61,7 @@ namespace Draft
             mainTblLayout.Width = this.Width - 2;
             mainTblLayout.Height = this.Height - 65;
             commandBar.Top = 24;
-            commandBar.Left = this.Width - 241;
+            commandBar.Left = this.Width - commandBar.Width - 1;
         }
 
         private void setTheme()
@@ -74,16 +76,16 @@ namespace Draft
             statusBar.BackColor = skinManager.ColorScheme.DarkPrimaryColor;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void addScrollBar()
         {
-            activeForm = this;
-            fileManager = new CodeFileManager();
-            fileManager.import();
             leftPanel.HorizontalScroll.Enabled = false;
             leftPanel.HorizontalScroll.Visible = false;
             leftPanel.HorizontalScroll.Maximum = 0;
             leftPanel.AutoScroll = true;
+        }
 
+        private void loadTheme()
+        {
             skinManager = MaterialSkin.MaterialSkinManager.Instance;
             skinManager.AddFormToManage(this);
             setTheme();
@@ -91,6 +93,24 @@ namespace Draft
             commandBar.textField.KeyDown += TextField_KeyDown;
             this.Controls.Add(commandBar);
             mainForm_Resize(null, null);
+        }
+
+        private void loadConsoleBox()
+        {
+            inputBox = new ConsoleBox("Input here", skinManager.ColorScheme.PrimaryColor, skinManager.ColorScheme.LightPrimaryColor, skinManager.ColorScheme.TextColor);
+            outputBox = new ConsoleBox("Output here", skinManager.ColorScheme.PrimaryColor, skinManager.ColorScheme.LightPrimaryColor, skinManager.ColorScheme.TextColor);
+            rightTableLayoutPanel.Controls.Add(inputBox);
+            rightTableLayoutPanel.Controls.Add(outputBox);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            activeForm = this;
+            fileManager = new CodeFileManager();
+            fileManager.import();
+            addScrollBar();
+            loadTheme();
+            loadConsoleBox();
         }
         
         private void saveBtn_Click(object sender, EventArgs e)
@@ -112,6 +132,35 @@ namespace Draft
         {
             fileManager.synchronizeAll();
             fileManager.export();
+        }
+
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    commandBar.Focus();
+                }
+                else if (e.KeyCode == Keys.O)
+                {
+                    fileManager.loadFile();
+                }
+                else if (e.KeyCode == Keys.R)
+                {
+                    if (rightTableLayoutPanel.ColumnStyles[1].Width == 0)
+                    {
+                        rightTableLayoutPanel.ColumnStyles[1].Width = 300;
+                    } else
+                    {
+                        rightTableLayoutPanel.ColumnStyles[1].Width = 0;
+                    }
+                }
+                else if (e.KeyCode == Keys.ControlKey)
+                {
+                    // only Ctrl here
+                }
+            }
         }
     }
 }

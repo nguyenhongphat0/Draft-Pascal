@@ -38,11 +38,13 @@ namespace Draft
             this.saveBtn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.loadBtn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.statusBar = new System.Windows.Forms.FlowLayoutPanel();
+            this.rightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.idePanel = new System.Windows.Forms.Panel();
             this.saveBtn_file = new System.Windows.Forms.SaveFileDialog();
             this.title = new System.Windows.Forms.Label();
             this.mainTblLayout.SuspendLayout();
             this.leftPanel.SuspendLayout();
+            this.rightTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // loadBtn_file
@@ -56,14 +58,14 @@ namespace Draft
             this.mainTblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTblLayout.Controls.Add(this.leftPanel, 0, 0);
             this.mainTblLayout.Controls.Add(this.statusBar, 0, 1);
-            this.mainTblLayout.Controls.Add(this.idePanel, 1, 0);
+            this.mainTblLayout.Controls.Add(this.rightTableLayoutPanel, 1, 0);
             this.mainTblLayout.Location = new System.Drawing.Point(1, 64);
             this.mainTblLayout.Margin = new System.Windows.Forms.Padding(0);
             this.mainTblLayout.Name = "mainTblLayout";
             this.mainTblLayout.RowCount = 2;
             this.mainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainTblLayout.Size = new System.Drawing.Size(690, 396);
+            this.mainTblLayout.Size = new System.Drawing.Size(596, 396);
             this.mainTblLayout.TabIndex = 0;
             // 
             // leftPanel
@@ -72,10 +74,9 @@ namespace Draft
             this.leftPanel.Controls.Add(this.saveBtn);
             this.leftPanel.Controls.Add(this.loadBtn);
             this.leftPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.leftPanel.Location = new System.Drawing.Point(0, 0);
-            this.leftPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.leftPanel.Location = new System.Drawing.Point(3, 3);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(300, 376);
+            this.leftPanel.Size = new System.Drawing.Size(294, 370);
             this.leftPanel.TabIndex = 4;
             // 
             // newBtn
@@ -111,7 +112,7 @@ namespace Draft
             this.loadBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.loadBtn.Name = "loadBtn";
             this.loadBtn.Primary = true;
-            this.loadBtn.Size = new System.Drawing.Size(96, 43);
+            this.loadBtn.Size = new System.Drawing.Size(91, 43);
             this.loadBtn.TabIndex = 0;
             this.loadBtn.Text = "Open";
             this.loadBtn.UseVisualStyleBackColor = true;
@@ -124,17 +125,34 @@ namespace Draft
             this.statusBar.Location = new System.Drawing.Point(0, 376);
             this.statusBar.Margin = new System.Windows.Forms.Padding(0);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(690, 20);
+            this.statusBar.Size = new System.Drawing.Size(596, 20);
             this.statusBar.TabIndex = 5;
+            // 
+            // rightTableLayoutPanel
+            // 
+            this.rightTableLayoutPanel.ColumnCount = 2;
+            this.rightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.rightTableLayoutPanel.Controls.Add(this.idePanel, 0, 0);
+            this.rightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rightTableLayoutPanel.Location = new System.Drawing.Point(300, 0);
+            this.rightTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.rightTableLayoutPanel.Name = "rightTableLayoutPanel";
+            this.rightTableLayoutPanel.RowCount = 2;
+            this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rightTableLayoutPanel.Size = new System.Drawing.Size(296, 376);
+            this.rightTableLayoutPanel.TabIndex = 6;
             // 
             // idePanel
             // 
             this.idePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.idePanel.Location = new System.Drawing.Point(300, 0);
+            this.idePanel.Location = new System.Drawing.Point(0, 0);
             this.idePanel.Margin = new System.Windows.Forms.Padding(0);
             this.idePanel.Name = "idePanel";
-            this.idePanel.Size = new System.Drawing.Size(390, 376);
-            this.idePanel.TabIndex = 6;
+            this.rightTableLayoutPanel.SetRowSpan(this.idePanel, 2);
+            this.idePanel.Size = new System.Drawing.Size(1, 376);
+            this.idePanel.TabIndex = 7;
             // 
             // title
             // 
@@ -152,7 +170,7 @@ namespace Draft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 459);
+            this.ClientSize = new System.Drawing.Size(599, 459);
             this.Controls.Add(this.title);
             this.Controls.Add(this.mainTblLayout);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -160,9 +178,11 @@ namespace Draft
             this.ShowIcon = false;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.Resize += new System.EventHandler(this.mainForm_Resize);
             this.mainTblLayout.ResumeLayout(false);
             this.leftPanel.ResumeLayout(false);
+            this.rightTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,6 +198,7 @@ namespace Draft
         private System.Windows.Forms.SaveFileDialog saveBtn_file;
         public System.Windows.Forms.FlowLayoutPanel leftPanel;
         public System.Windows.Forms.Label title;
+        private System.Windows.Forms.TableLayoutPanel rightTableLayoutPanel;
         public System.Windows.Forms.Panel idePanel;
     }
 }
