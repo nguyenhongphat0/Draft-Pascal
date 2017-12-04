@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Draft
 {
-    class Randomizer
+    class StringGenerator
     {
         public static string aRandomString(int n)
         {
@@ -34,6 +34,11 @@ namespace Draft
                 s = prefix + aRandomString(10) + extension;
             } while (File.Exists(s));
             return s;
+        }
+
+        public static string beautify(string std, string filename)
+        {
+            return std.Replace(filename, "").TrimStart(':', ' ');
         }
     }
 }

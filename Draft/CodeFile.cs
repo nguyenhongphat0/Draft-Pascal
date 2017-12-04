@@ -1,6 +1,7 @@
 ﻿using FastColoredTextBoxNS;
 using MaterialSkin.Controls;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -17,7 +18,7 @@ namespace Draft
 
         public CodeFile()
         {
-            this.virtualPath = Randomizer.aRandomFile(this.realPath, CodeFileManager.virtualFilePrefix);
+            this.virtualPath = StringGenerator.aRandomFile(this.realPath, CodeFileManager.virtualFilePrefix);
             this.isSaved = false;
             this.createOnDisk(virtualPath);
         }
@@ -25,7 +26,7 @@ namespace Draft
         public CodeFile(string path)
         {
             this.realPath = path;
-            this.virtualPath = Randomizer.aRandomFile(this.realPath, CodeFileManager.virtualFilePrefix);
+            this.virtualPath = StringGenerator.aRandomFile(this.realPath, CodeFileManager.virtualFilePrefix);
             File.WriteAllText(virtualPath, File.ReadAllText(realPath));
             this.isSaved = true;
         }
@@ -36,6 +37,16 @@ namespace Draft
             this.virtualPath = param[1];
             this.isSaved = bool.Parse(param[2]);
             this.isModified = bool.Parse(param[3]);
+        }
+
+        public string getFilename(bool isRealPath)
+        {
+            return new FileInfo(isRealPath? realPath : virtualPath).Name;
+        }
+
+        public string getDirectory(bool isRealPath)
+        {
+            return new FileInfo(isRealPath ? realPath : virtualPath).DirectoryName;
         }
 
         public string getExtension()
@@ -192,6 +203,18 @@ namespace Draft
             updateView();
         }
         
+        public bool compile(ConsoleBox log)
+        {
+            Process p = SystemCommand.init(SystemCommand.mingw(), this.getFilename(false));
+            p.WaitForExit();
+            string output = p.StandardOutput.ReadToEnd();
+            string error = p.StandardError.ReadToEnd();
+            log.textField.Text = StringGenerator.beautify(error + output, this.getFilename(false));
+            if (error == "" && output == "") return true;
+            else return false;
+
+        }
+
         public string ToString()
         {
             return realPath + "|" + virtualPath + "|" + isSaved + "|" + isModified;

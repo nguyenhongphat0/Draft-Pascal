@@ -16,6 +16,11 @@ namespace Draft
 
         public CommandBar commandBar;
         public MaterialSkinManager skinManager;
+        Primary primaryColor = Primary.Grey900;
+        Primary darkPrimaryColor = Primary.Red700;
+        Primary lightPrimaryColor = Primary.Grey800;
+        Accent accentColor = Accent.Green400;
+        TextShade textShadeColor = TextShade.WHITE;
         public ConsoleBox inputBox;
         public ConsoleBox outputBox;
 
@@ -46,7 +51,21 @@ namespace Draft
 						Close();
 						break;
 
-					default:
+                    case "go":
+                        if (fileManager.currentFile.compile(outputBox))
+                        {
+                            darkPrimaryColor = Primary.Green500;
+                            updateColorScheme();
+                            SystemCommand.go("a.exe", "");
+                        }
+                        else
+                        {
+                            darkPrimaryColor = Primary.Red700;
+                            updateColorScheme();
+                        }
+                        break;
+
+                    default:
 						break;
 				}
                 
@@ -55,27 +74,6 @@ namespace Draft
 			}
 		}
 
-		private void mainForm_Resize(object sender, EventArgs e)
-		{
-            this.WindowState = FormWindowState.Normal;
-            mainTblLayout.Width = this.Width - 2;
-            mainTblLayout.Height = this.Height - 65;
-            commandBar.Top = 24;
-            commandBar.Left = this.Width - commandBar.Width - 1;
-        }
-
-        private void setTheme()
-        {
-            skinManager.Theme = MaterialSkinManager.Themes.DARK;
-            Primary primary = Primary.Grey900;
-            Primary darkPrimary = Primary.Green500;
-            Primary lightPrimary = Primary.Grey800;
-            Accent accent = Accent.Green400;
-            TextShade textShade = TextShade.WHITE;
-            skinManager.ColorScheme = new ColorScheme(primary, darkPrimary, lightPrimary, accent, textShade);
-            statusBar.BackColor = skinManager.ColorScheme.DarkPrimaryColor;
-        }
-
         private void addScrollBar()
         {
             leftPanel.HorizontalScroll.Enabled = false;
@@ -83,12 +81,24 @@ namespace Draft
             leftPanel.HorizontalScroll.Maximum = 0;
             leftPanel.AutoScroll = true;
         }
+        
+        private void updateColorScheme()
+        {
+            skinManager.ColorScheme = new ColorScheme(primaryColor, darkPrimaryColor, lightPrimaryColor, accentColor, textShadeColor);
+            statusBar.BackColor = skinManager.ColorScheme.DarkPrimaryColor;
+        }
 
         private void loadTheme()
         {
             skinManager = MaterialSkin.MaterialSkinManager.Instance;
             skinManager.AddFormToManage(this);
-            setTheme();
+            skinManager.Theme = MaterialSkinManager.Themes.DARK;
+            primaryColor = Primary.Grey900;
+            darkPrimaryColor = Primary.Green500;
+            lightPrimaryColor = Primary.Grey800;
+            accentColor = Accent.Green400;
+            textShadeColor = TextShade.WHITE;
+            updateColorScheme();
             commandBar = new CommandBar(skinManager.ColorScheme.PrimaryColor, skinManager.ColorScheme.LightPrimaryColor, skinManager.ColorScheme.TextColor);
             commandBar.textField.KeyDown += TextField_KeyDown;
             this.Controls.Add(commandBar);
@@ -101,6 +111,18 @@ namespace Draft
             outputBox = new ConsoleBox("Output here", skinManager.ColorScheme.PrimaryColor, skinManager.ColorScheme.LightPrimaryColor, skinManager.ColorScheme.TextColor);
             rightTableLayoutPanel.Controls.Add(inputBox);
             rightTableLayoutPanel.Controls.Add(outputBox);
+        }
+
+        private void toggleDebugBox()
+        {
+            if (rightTableLayoutPanel.ColumnStyles[1].Width == 0)
+            {
+                rightTableLayoutPanel.ColumnStyles[1].Width = 300;
+            }
+            else
+            {
+                rightTableLayoutPanel.ColumnStyles[1].Width = 0;
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -148,19 +170,21 @@ namespace Draft
                 }
                 else if (e.KeyCode == Keys.R)
                 {
-                    if (rightTableLayoutPanel.ColumnStyles[1].Width == 0)
-                    {
-                        rightTableLayoutPanel.ColumnStyles[1].Width = 300;
-                    } else
-                    {
-                        rightTableLayoutPanel.ColumnStyles[1].Width = 0;
-                    }
+                    toggleDebugBox();
                 }
                 else if (e.KeyCode == Keys.ControlKey)
                 {
                     // only Ctrl here
                 }
             }
+        }
+
+        private void mainForm_Resize(object sender, EventArgs e)
+        {
+            mainTblLayout.Width = this.Width - 2;
+            mainTblLayout.Height = this.Height - 65;
+            commandBar.Top = 24;
+            commandBar.Left = this.Width - commandBar.Width - 1;
         }
     }
 }

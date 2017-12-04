@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Draft
+{
+    class SystemCommand
+    {
+        public static string mingw()
+        {
+            return CodeFileManager.mingwPath + "gcc.exe";
+        }
+
+        public static void go(string command, string param)
+        {
+            Process process = new Process();
+            process.StartInfo.FileName = command;
+            process.StartInfo.Arguments = param;
+            process.StartInfo.WorkingDirectory = CodeFileManager.virtualFilePrefix;
+            process.Start();
+            process.WaitForExit();
+        }
+
+        public static Process init(string command, string param)
+        {
+            Process process = new Process();
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardInput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.FileName = command;
+            process.StartInfo.Arguments = param;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.StartInfo.CreateNoWindow = true;
+            process.StartInfo.WorkingDirectory = CodeFileManager.virtualFilePrefix;
+            process.Start();
+            return process;
+        }
+    }
+}

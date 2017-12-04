@@ -12,3 +12,4 @@ C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\D
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\Debug\Draft.exe
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\Debug\Draft.pdb
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\Debug\Draft.ConsoleBox.resources
+C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\Debug\Draft.csprojResolveAssemblyReference.cache

@@ -82,7 +82,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Randomizer.cs" />
+    <Compile Include="StringGenerator.cs" />
+    <Compile Include="SystemCommand.cs" />
     <EmbeddedResource Include="ConsoleBox.resx">
       <DependentUpon>ConsoleBox.cs</DependentUpon>
     </EmbeddedResource>

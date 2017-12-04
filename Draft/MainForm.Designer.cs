@@ -65,7 +65,7 @@ namespace Draft
             this.mainTblLayout.RowCount = 2;
             this.mainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainTblLayout.Size = new System.Drawing.Size(596, 396);
+            this.mainTblLayout.Size = new System.Drawing.Size(1239, 566);
             this.mainTblLayout.TabIndex = 0;
             // 
             // leftPanel
@@ -76,7 +76,7 @@ namespace Draft
             this.leftPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leftPanel.Location = new System.Drawing.Point(3, 3);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(294, 370);
+            this.leftPanel.Size = new System.Drawing.Size(294, 540);
             this.leftPanel.TabIndex = 4;
             // 
             // newBtn
@@ -122,10 +122,10 @@ namespace Draft
             // 
             this.mainTblLayout.SetColumnSpan(this.statusBar, 2);
             this.statusBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusBar.Location = new System.Drawing.Point(0, 376);
+            this.statusBar.Location = new System.Drawing.Point(0, 546);
             this.statusBar.Margin = new System.Windows.Forms.Padding(0);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(596, 20);
+            this.statusBar.Size = new System.Drawing.Size(1239, 20);
             this.statusBar.TabIndex = 5;
             // 
             // rightTableLayoutPanel
@@ -141,7 +141,7 @@ namespace Draft
             this.rightTableLayoutPanel.RowCount = 2;
             this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.rightTableLayoutPanel.Size = new System.Drawing.Size(296, 376);
+            this.rightTableLayoutPanel.Size = new System.Drawing.Size(939, 546);
             this.rightTableLayoutPanel.TabIndex = 6;
             // 
             // idePanel
@@ -151,7 +151,7 @@ namespace Draft
             this.idePanel.Margin = new System.Windows.Forms.Padding(0);
             this.idePanel.Name = "idePanel";
             this.rightTableLayoutPanel.SetRowSpan(this.idePanel, 2);
-            this.idePanel.Size = new System.Drawing.Size(1, 376);
+            this.idePanel.Size = new System.Drawing.Size(639, 546);
             this.idePanel.TabIndex = 7;
             // 
             // title
@@ -170,9 +170,10 @@ namespace Draft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 459);
+            this.ClientSize = new System.Drawing.Size(1241, 632);
             this.Controls.Add(this.title);
             this.Controls.Add(this.mainTblLayout);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.ShowIcon = false;
