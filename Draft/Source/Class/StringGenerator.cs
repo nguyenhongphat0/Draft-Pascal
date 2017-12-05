@@ -38,7 +38,8 @@ namespace Draft
 
         public static string beautify(string std, string filename)
         {
-            return std.Replace(filename, "").TrimStart(':', ' ');
+            //return std.Replace(filename, "").TrimStart(':', ' ');
+            return std;
         }
     }
 }

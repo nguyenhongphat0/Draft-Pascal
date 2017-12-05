@@ -59,6 +59,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Form\AppCommands.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Source\Class\CodeFile.cs" />
     <Compile Include="Source\Class\CodeFileManager.cs" />
     <Compile Include="Source\Control\ConsoleBox.cs">
@@ -125,6 +128,9 @@
     <Content Include="Asset\compile.png" />
     <Content Include="Asset\help.png" />
     <Content Include="Asset\feedback.png" />
+    <Content Include="Asset\debug.png" />
+    <Content Include="Asset\braces.png" />
+    <Content Include="Asset\windows.png" />
     <Content Include="Asset\setting.png" />
     <Content Include="Asset\find.png" />
     <Content Include="Asset\replace.png" />

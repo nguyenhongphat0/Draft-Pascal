@@ -9,8 +9,8 @@ namespace Draft
 {
     public class CodeFile
     {
-        private IDEBox editor;
-        private MaterialFlatButton button;
+        public IDEBox editor;
+        public MaterialFlatButton button;
         public string realPath;
         public string virtualPath;
         public bool isSaved;
@@ -206,6 +206,7 @@ namespace Draft
         public bool compile(ConsoleBox log)
         {
             Process p = SystemCommand.init(SystemCommand.mingw(), this.getFilename(false));
+            p.Start();
             p.WaitForExit();
             string output = p.StandardOutput.ReadToEnd();
             string error = p.StandardError.ReadToEnd();

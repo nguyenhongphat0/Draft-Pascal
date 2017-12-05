@@ -7,6 +7,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
 using System.Threading;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace Draft
 {
@@ -14,16 +16,21 @@ namespace Draft
 	{
         public static MainForm activeForm;
         public static CodeFileManager fileManager;
+        public static Thread executeThread;
 
         public CommandBar commandBar;
         public MaterialSkinManager skinManager;
         Primary primaryColor = Primary.Grey900;
-        Primary darkPrimaryColor = Primary.Red700;
+        Primary darkPrimaryColor = Primary.Green500;
         Primary lightPrimaryColor = Primary.Grey800;
-        Accent accentColor = Accent.Green400;
+        Accent accentColor = Accent.LightGreen700;
         TextShade textShadeColor = TextShade.WHITE;
         public ConsoleBox inputBox;
         public ConsoleBox outputBox;
+
+        bool isSafeMode = false;
+        bool isInternalMode = false;
+        bool isDebugShowed = false;
 
 		public MainForm()
 		{
@@ -53,23 +60,7 @@ namespace Draft
 						break;
 
                     case "go":
-                        fileManager.currentFile.synchronize();
-                        if (fileManager.currentFile.compile(outputBox))
-                        {
-                            darkPrimaryColor = Primary.Orange500;
-                            statusBar.BackColor = Color.Orange;
-                            this.Update();
-                            updateColorScheme();
-                            SystemCommand.go("a.exe", "");
-                            darkPrimaryColor = Primary.Green500;
-                            updateColorScheme();
-                        }
-                        else
-                        {
-                            darkPrimaryColor = Primary.Red700;
-                            updateColorScheme();
-                            showDebugBox();
-                        }
+                        go();
                         break;
 
                     default:
@@ -80,6 +71,8 @@ namespace Draft
 				fileManager.currentFile.focus();
 			}
 		}
+
+        private delegate void SafeSetText(string text, TextBox textbox);
 
         private void addScrollBar()
         {
@@ -103,7 +96,7 @@ namespace Draft
             primaryColor = Primary.Grey900;
             darkPrimaryColor = Primary.Green500;
             lightPrimaryColor = Primary.Grey800;
-            accentColor = Accent.Green400;
+            accentColor = Accent.LightGreen700;
             textShadeColor = TextShade.WHITE;
             updateColorScheme();
             commandBar = new CommandBar(skinManager.ColorScheme.PrimaryColor, skinManager.ColorScheme.LightPrimaryColor, skinManager.ColorScheme.TextColor);
@@ -115,41 +108,96 @@ namespace Draft
         private void loadConsoleBox()
         {
             inputBox = new ConsoleBox("Input here", skinManager.ColorScheme.PrimaryColor, skinManager.ColorScheme.LightPrimaryColor, skinManager.ColorScheme.TextColor);
+            //inputBox.Margin = new Padding(6);
             outputBox = new ConsoleBox("Output here", skinManager.ColorScheme.PrimaryColor, skinManager.ColorScheme.LightPrimaryColor, skinManager.ColorScheme.TextColor);
+            //outputBox.Margin = new Padding(6, 0, 6, 6);
             rightTableLayoutPanel.Controls.Add(inputBox);
             rightTableLayoutPanel.Controls.Add(outputBox);
         }
 
         private void toggleDebugBox()
         {
-            if (rightTableLayoutPanel.ColumnStyles[1].Width == 0)
+            if (isDebugShowed)
             {
-                showDebugBox();
+                hideDebugBox();
             }
             else
             {
-                hideDebugBox();
+                showDebugBox();
             }
         }
 
         private void hideDebugBox()
         {
             rightTableLayoutPanel.ColumnStyles[1].Width = 0;
+            toggleDebugBtn.BackColor = Color.Transparent;
+            isDebugShowed = false;
         }
 
         private void showDebugBox()
         {
             rightTableLayoutPanel.ColumnStyles[1].Width = 300;
+            toggleDebugBtn.BackColor = skinManager.ColorScheme.LightPrimaryColor;
+            isDebugShowed = true;
+        }
+
+        private void saveLastState()
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                Properties.Settings.Default.Location = RestoreBounds.Location;
+                Properties.Settings.Default.Size = RestoreBounds.Size;
+                Properties.Settings.Default.Maximized = true;
+                Properties.Settings.Default.Minimized = false;
+            }
+            else if (WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.Location = Location;
+                Properties.Settings.Default.Size = Size;
+                Properties.Settings.Default.Maximized = false;
+                Properties.Settings.Default.Minimized = false;
+            }
+            else
+            {
+                Properties.Settings.Default.Location = RestoreBounds.Location;
+                Properties.Settings.Default.Size = RestoreBounds.Size;
+                Properties.Settings.Default.Maximized = false;
+                Properties.Settings.Default.Minimized = true;
+            }
+            Properties.Settings.Default.Save();
+        }
+
+        private void loadLastState()
+        {
+            if (Properties.Settings.Default.Maximized)
+            {
+                WindowState = FormWindowState.Maximized;
+                Location = Properties.Settings.Default.Location;
+                Size = Properties.Settings.Default.Size;
+            }
+            else if (Properties.Settings.Default.Minimized)
+            {
+                WindowState = FormWindowState.Minimized;
+                Location = Properties.Settings.Default.Location;
+                Size = Properties.Settings.Default.Size;
+            }
+            else
+            {
+                Location = Properties.Settings.Default.Location;
+                Size = Properties.Settings.Default.Size;
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             activeForm = this;
-            fileManager = new CodeFileManager();
-            fileManager.import();
             addScrollBar();
             loadTheme();
             loadConsoleBox();
+            loadLastState();
+            fileManager = new CodeFileManager();
+            fileManager.import();
+            stopBtn.Visible = false;
         }
         
         private void saveBtn_Click(object sender, EventArgs e)
@@ -171,6 +219,7 @@ namespace Draft
         {
             fileManager.synchronizeAll();
             fileManager.export();
+            saveLastState();
         }
 
         private void MainForm_KeyUp(object sender, KeyEventArgs e)
@@ -206,6 +255,36 @@ namespace Draft
             mainTblLayout.Height = this.Height - 65;
             commandBar.Top = 24;
             commandBar.Left = this.Width - commandBar.Width - 1;
+        }
+
+        private void toggleDebugBtn_Click(object sender, EventArgs e)
+        {
+            toggleDebugBox();
+        }
+
+        private void toggleInternalMode()
+        {
+            if (isInternalMode)
+            {
+                toggleInternalModeBtn.BackColor = Color.Transparent;
+            }
+            else
+            {
+                toggleInternalModeBtn.BackColor = skinManager.ColorScheme.LightPrimaryColor;
+            }
+            isInternalMode = !isInternalMode;
+        }
+
+        private void toggleInternalModeBtn_Click(object sender, EventArgs e)
+        {
+            toggleInternalMode();
+        }
+
+        private void stopBtn_Click(object sender, EventArgs e)
+        {
+            executeThread.Abort();
+            executeProcess.Kill();
+            toEditorMode();
         }
     }
 }

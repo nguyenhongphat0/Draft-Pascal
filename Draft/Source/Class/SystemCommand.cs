@@ -37,8 +37,21 @@ namespace Draft
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.StartInfo.CreateNoWindow = true;
             process.StartInfo.WorkingDirectory = CodeFileManager.virtualFilePrefix;
-            process.Start();
             return process;
+        }
+
+        public static bool ExecuteWithTimeLimit(int timeSpan, Action codeBlock)
+        {
+            try
+            {
+                Task task = Task.Factory.StartNew(() => codeBlock());
+                task.Wait(timeSpan);
+                return task.IsCompleted;
+            }
+            catch (AggregateException ae)
+            {
+                throw ae.InnerExceptions[0];
+            }
         }
     }
 }

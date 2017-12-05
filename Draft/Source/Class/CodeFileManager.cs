@@ -63,7 +63,7 @@ namespace Draft
         {
             foreach (var f in openedFiles)
             {
-                if (f.realPath == filename)
+                if (f.realPath == filename && f.editor != null)
                 {
                     f.browse();
                     return;
@@ -84,9 +84,16 @@ namespace Draft
 
         public void synchronizeAll()
         {
-            foreach (var file in openedFiles)
+            for (int i = openedFiles.Count - 1; i >= 0; i--)
             {
-                file.synchronize();
+                try
+                {
+                    openedFiles[i].synchronize();
+                }
+                catch (Exception)
+                {
+                    openedFiles.RemoveAt(i);
+                }
             }
         }
 
@@ -120,7 +127,7 @@ namespace Draft
                 try
                 {
                     string[] lines = File.ReadAllLines(managerFile);
-                    for (int i = lines.Length-1; i > 0; i--)
+                    for (int i = lines.Length - 1; i > 0; i--)
                     {
                         string[] ss = lines[i].Split('|');
                         if (!File.Exists(ss[0]) && ss[2] == "True") continue;
