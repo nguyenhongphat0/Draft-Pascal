@@ -35,7 +35,11 @@ namespace Draft
 		public MainForm()
 		{
 			InitializeComponent();
-		}
+            addScrollBar();
+            loadTheme();
+            loadConsoleBox();
+            stopBtn.Visible = false;
+        }
 
 		private void TextField_KeyDown(object sender, KeyEventArgs e)
 		{
@@ -191,13 +195,9 @@ namespace Draft
         private void MainForm_Load(object sender, EventArgs e)
         {
             activeForm = this;
-            addScrollBar();
-            loadTheme();
-            loadConsoleBox();
             loadLastState();
             fileManager = new CodeFileManager();
             fileManager.import();
-            stopBtn.Visible = false;
         }
         
         private void saveBtn_Click(object sender, EventArgs e)
@@ -251,10 +251,10 @@ namespace Draft
 
         private void mainForm_Resize(object sender, EventArgs e)
         {
-            mainTblLayout.Width = this.Width - 2;
-            mainTblLayout.Height = this.Height - 65;
             commandBar.Top = 24;
             commandBar.Left = this.Width - commandBar.Width - 1;
+            mainTblLayout.Width = this.Width - 2;
+            mainTblLayout.Height = this.Height - 65;
         }
 
         private void toggleDebugBtn_Click(object sender, EventArgs e)
