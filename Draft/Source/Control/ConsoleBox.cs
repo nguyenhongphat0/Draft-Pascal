@@ -14,7 +14,7 @@ namespace Draft
 		{
 			InitializeComponent();
             this.Dock = DockStyle.Fill;
-            this.placeholder.Text = placeholder;
+            this.placeholder.Text = placeholder.ToUpper();
             this.defaultColor = defaultColor;
             this.focusColor = focusColor;
             this.textColor = textColor;

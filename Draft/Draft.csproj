@@ -54,58 +54,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeFile.cs" />
-    <Compile Include="CodeFileManager.cs" />
-    <Compile Include="ConsoleBox.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Class\CodeFile.cs" />
+    <Compile Include="Source\Class\CodeFileManager.cs" />
+    <Compile Include="Source\Control\ConsoleBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ConsoleBox.Designer.cs">
+    <Compile Include="Source\Control\ConsoleBox.Designer.cs">
       <DependentUpon>ConsoleBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommandBar.cs">
+    <Compile Include="Source\Control\CommandBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CommandBar.Designer.cs">
+    <Compile Include="Source\Control\CommandBar.Designer.cs">
       <DependentUpon>CommandBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="IDEBox.cs">
+    <Compile Include="Source\Control\IDEBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="IDEBox.Designer.cs">
+    <Compile Include="Source\Control\IDEBox.Designer.cs">
       <DependentUpon>IDEBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringGenerator.cs" />
-    <Compile Include="SystemCommand.cs" />
-    <EmbeddedResource Include="ConsoleBox.resx">
+    <Compile Include="Source\Class\StringGenerator.cs" />
+    <Compile Include="Source\Class\SystemCommand.cs" />
+    <EmbeddedResource Include="Source\Control\ConsoleBox.resx">
       <DependentUpon>ConsoleBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CommandBar.resx">
+    <EmbeddedResource Include="Source\Control\CommandBar.resx">
       <DependentUpon>CommandBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IDEBox.resx">
+    <EmbeddedResource Include="Source\Control\IDEBox.resx">
       <DependentUpon>IDEBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -119,6 +119,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Asset\compile.png" />
+    <Content Include="Asset\help.png" />
+    <Content Include="Asset\feedback.png" />
+    <Content Include="Asset\setting.png" />
+    <Content Include="Asset\find.png" />
+    <Content Include="Asset\replace.png" />
+    <Content Include="Asset\saveas.png" />
+    <Content Include="Asset\redo.png" />
+    <Content Include="Asset\undo.png" />
+    <Content Include="Asset\stop.png" />
+    <Content Include="Asset\run.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

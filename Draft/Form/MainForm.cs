@@ -6,6 +6,7 @@ using MaterialSkin;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Draft
 {
@@ -52,16 +53,22 @@ namespace Draft
 						break;
 
                     case "go":
+                        fileManager.currentFile.synchronize();
                         if (fileManager.currentFile.compile(outputBox))
                         {
-                            darkPrimaryColor = Primary.Green500;
+                            darkPrimaryColor = Primary.Orange500;
+                            statusBar.BackColor = Color.Orange;
+                            this.Update();
                             updateColorScheme();
                             SystemCommand.go("a.exe", "");
+                            darkPrimaryColor = Primary.Green500;
+                            updateColorScheme();
                         }
                         else
                         {
                             darkPrimaryColor = Primary.Red700;
                             updateColorScheme();
+                            showDebugBox();
                         }
                         break;
 
@@ -117,12 +124,22 @@ namespace Draft
         {
             if (rightTableLayoutPanel.ColumnStyles[1].Width == 0)
             {
-                rightTableLayoutPanel.ColumnStyles[1].Width = 300;
+                showDebugBox();
             }
             else
             {
-                rightTableLayoutPanel.ColumnStyles[1].Width = 0;
+                hideDebugBox();
             }
+        }
+
+        private void hideDebugBox()
+        {
+            rightTableLayoutPanel.ColumnStyles[1].Width = 0;
+        }
+
+        private void showDebugBox()
+        {
+            rightTableLayoutPanel.ColumnStyles[1].Width = 300;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -168,7 +185,7 @@ namespace Draft
                 {
                     fileManager.loadFile();
                 }
-                else if (e.KeyCode == Keys.R)
+                else if (e.KeyCode == Keys.Oemtilde)
                 {
                     toggleDebugBox();
                 }
@@ -176,6 +193,10 @@ namespace Draft
                 {
                     // only Ctrl here
                 }
+                //else
+                //{
+                //    MessageBox.Show(e.KeyCode.ToString());
+                //}
             }
         }
 

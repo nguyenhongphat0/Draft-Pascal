@@ -52,11 +52,11 @@
             // 
             this.placeholder.AutoSize = true;
             this.placeholder.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.placeholder.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeholder.ForeColor = System.Drawing.Color.White;
+            this.placeholder.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.placeholder.ForeColor = System.Drawing.Color.Gray;
             this.placeholder.Location = new System.Drawing.Point(114, 77);
             this.placeholder.Name = "placeholder";
-            this.placeholder.Size = new System.Drawing.Size(121, 30);
+            this.placeholder.Size = new System.Drawing.Size(135, 30);
             this.placeholder.TabIndex = 5;
             this.placeholder.Text = "Placeholder";
             this.placeholder.Click += new System.EventHandler(this.placeholder_Click);
