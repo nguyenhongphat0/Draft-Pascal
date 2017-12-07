@@ -1,7 +1,7 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
-using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -9,21 +9,9 @@ namespace Draft
 {
     public partial class MainForm : MaterialForm
     {
-        Process executeProcess;
-
         public void go()
         {
-            if (executeThread != null && executeThread.IsAlive)
-            {
-                if (MessageBox.Show(this, "The current program is still running. Click \"Yes\" to stop it and start a new one, or \"No\" to wait for it to complete?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    executeThread.Abort();
-                }
-                else
-                {
-                    return;
-                }
-            }
+            if (executeThread != null && executeThread.IsAlive) stop();
             fileManager.currentFile.synchronize();
             if (fileManager.currentFile.compile(outputBox))
             {
@@ -60,30 +48,38 @@ namespace Draft
             }
         }
 
-        public void toRunMode()
+        public void stop()
         {
-            darkPrimaryColor = Primary.Orange500;
-            statusBar.BackColor = Color.Orange;
-            this.Update();
-            updateColorScheme();
-            runBtn.Visible = false;
-            stopBtn.Visible = true;
+            executeThread.Abort();
+            executeProcess.Kill();
+            toEditorMode();
         }
 
-        public void toBugMode()
+        public void build()
         {
-            darkPrimaryColor = Primary.Red700;
-            updateColorScheme();
-            runBtn.Visible = true;
-            stopBtn.Visible = false;
+            if (fileManager.currentFile.compile(outputBox))
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Execute file|*.exe";
+                sfd.Title = "Compile to";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(CodeFileManager.virtualFilePrefix + "a.exe", sfd.FileName);
+                    MessageBox.Show("Program successfully compiled to " + sfd.FileName);
+                }
+            }
         }
 
-        public void toEditorMode()
+        public void saveAs()
         {
-            darkPrimaryColor = Primary.Green500;
-            updateColorScheme();
-            runBtn.Visible = true;
-            stopBtn.Visible = false;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "C files|*.c|All files|*.*";
+            sfd.Title = "Save as";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                fileManager.currentFile.realPath = sfd.FileName;
+                fileManager.currentFile.save();
+            }
         }
     }
 }

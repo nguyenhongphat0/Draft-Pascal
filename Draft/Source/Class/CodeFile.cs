@@ -205,12 +205,12 @@ namespace Draft
         
         public bool compile(ConsoleBox log)
         {
-            Process p = SystemCommand.init(SystemCommand.mingw(), this.getFilename(false));
+            Process p = SystemCommand.init(SystemCommand.mingw(), "-std=c99 " + this.getFilename(false));
             p.Start();
             p.WaitForExit();
             string output = p.StandardOutput.ReadToEnd();
             string error = p.StandardError.ReadToEnd();
-            log.textField.Text = StringGenerator.beautify(error + output, this.getFilename(false));
+            log.textField.Text = StringGenerator.beautify(error + output, this.getFilename(false), this.getFilename(true));
             if (error == "" && output == "") return true;
             else return false;
 

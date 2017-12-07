@@ -245,6 +245,7 @@ namespace Draft
             this.runBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.runBtn.TabIndex = 1;
             this.runBtn.TabStop = false;
+            this.runBtn.Click += new System.EventHandler(this.runBtn_Click);
             // 
             // stopBtn
             // 
@@ -270,6 +271,7 @@ namespace Draft
             this.buildBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buildBtn.TabIndex = 4;
             this.buildBtn.TabStop = false;
+            this.buildBtn.Click += new System.EventHandler(this.buildBtn_Click);
             // 
             // saveAsBtn
             // 
@@ -282,6 +284,7 @@ namespace Draft
             this.saveAsBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.saveAsBtn.TabIndex = 5;
             this.saveAsBtn.TabStop = false;
+            this.saveAsBtn.Click += new System.EventHandler(this.saveAsBtn_Click);
             // 
             // undoBtn
             // 
@@ -294,6 +297,7 @@ namespace Draft
             this.undoBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.undoBtn.TabIndex = 6;
             this.undoBtn.TabStop = false;
+            this.undoBtn.Click += new System.EventHandler(this.undoBtn_Click);
             // 
             // redoBtn
             // 
@@ -306,6 +310,7 @@ namespace Draft
             this.redoBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.redoBtn.TabIndex = 7;
             this.redoBtn.TabStop = false;
+            this.redoBtn.Click += new System.EventHandler(this.redoBtn_Click);
             // 
             // findBtn
             // 
@@ -318,6 +323,7 @@ namespace Draft
             this.findBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.findBtn.TabIndex = 8;
             this.findBtn.TabStop = false;
+            this.findBtn.Click += new System.EventHandler(this.findBtn_Click);
             // 
             // replaceBtn
             // 
@@ -330,6 +336,7 @@ namespace Draft
             this.replaceBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.replaceBtn.TabIndex = 9;
             this.replaceBtn.TabStop = false;
+            this.replaceBtn.Click += new System.EventHandler(this.replaceBtn_Click);
             // 
             // settingBtn
             // 
