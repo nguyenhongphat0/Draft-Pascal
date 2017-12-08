@@ -41,7 +41,7 @@
             this.textField.Name = "textField";
             this.textField.Size = new System.Drawing.Size(264, 18);
             this.textField.TabIndex = 4;
-            this.textField.Text = "do something (Ctrl+Enter) ...";
+            this.textField.Text = "command here (Ctrl+Enter) ...";
             this.textField.Enter += new System.EventHandler(this.textField_Enter);
             this.textField.Leave += new System.EventHandler(this.textField_Leave);
             // 

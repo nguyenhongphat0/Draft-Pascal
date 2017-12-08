@@ -36,9 +36,9 @@ namespace Draft
             return s;
         }
 
-        public static string beautify(string std, string virtualName, string realName)
+        public static string beautify(string std, string filePath)
         {
-            return std.Replace(virtualName, realName).TrimStart(':', ' ');
+            return std.Replace(filePath, "").TrimStart(':', ' ');
         }
     }
 }

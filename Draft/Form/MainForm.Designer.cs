@@ -31,6 +31,7 @@ namespace Draft
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             this.loadBtn_file = new System.Windows.Forms.OpenFileDialog();
             this.mainTblLayout = new System.Windows.Forms.TableLayoutPanel();
             this.leftPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -59,6 +60,7 @@ namespace Draft
             this.toggleInternalModeBtn = new System.Windows.Forms.PictureBox();
             this.saveBtn_file = new System.Windows.Forms.SaveFileDialog();
             this.title = new System.Windows.Forms.Label();
+            this.buttonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.mainTblLayout.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.rightTableLayoutPanel.SuspendLayout();
@@ -149,7 +151,7 @@ namespace Draft
             this.loadBtn.Primary = true;
             this.loadBtn.Size = new System.Drawing.Size(91, 43);
             this.loadBtn.TabIndex = 0;
-            this.loadBtn.Text = "Open";
+            this.loadBtn.Text = "Load";
             this.loadBtn.UseVisualStyleBackColor = true;
             this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
             // 
@@ -245,6 +247,7 @@ namespace Draft
             this.runBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.runBtn.TabIndex = 1;
             this.runBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.runBtn, "Run code (shortcut: Ctrl+F9, command: \"go\")");
             this.runBtn.Click += new System.EventHandler(this.runBtn_Click);
             // 
             // stopBtn
@@ -258,6 +261,7 @@ namespace Draft
             this.stopBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.stopBtn.TabIndex = 2;
             this.stopBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.stopBtn, "Stop executing (shortcut: Ctrl+F8, command: \"stop\")");
             this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
             // 
             // buildBtn
@@ -271,6 +275,7 @@ namespace Draft
             this.buildBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buildBtn.TabIndex = 4;
             this.buildBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.buildBtn, "Build to exe (command: \"build\")");
             this.buildBtn.Click += new System.EventHandler(this.buildBtn_Click);
             // 
             // saveAsBtn
@@ -284,6 +289,7 @@ namespace Draft
             this.saveAsBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.saveAsBtn.TabIndex = 5;
             this.saveAsBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.saveAsBtn, "Save as (command: \"saveas\")");
             this.saveAsBtn.Click += new System.EventHandler(this.saveAsBtn_Click);
             // 
             // undoBtn
@@ -297,6 +303,7 @@ namespace Draft
             this.undoBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.undoBtn.TabIndex = 6;
             this.undoBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.undoBtn, "Undo (shortcut: Ctrl+Z)");
             this.undoBtn.Click += new System.EventHandler(this.undoBtn_Click);
             // 
             // redoBtn
@@ -310,6 +317,7 @@ namespace Draft
             this.redoBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.redoBtn.TabIndex = 7;
             this.redoBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.redoBtn, "Redo (shortcut: Ctrl+R)");
             this.redoBtn.Click += new System.EventHandler(this.redoBtn_Click);
             // 
             // findBtn
@@ -323,6 +331,7 @@ namespace Draft
             this.findBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.findBtn.TabIndex = 8;
             this.findBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.findBtn, "Find (shortcut: Ctrl+F)");
             this.findBtn.Click += new System.EventHandler(this.findBtn_Click);
             // 
             // replaceBtn
@@ -336,6 +345,7 @@ namespace Draft
             this.replaceBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.replaceBtn.TabIndex = 9;
             this.replaceBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.replaceBtn, "Replace (shortcut: Ctrl+H)");
             this.replaceBtn.Click += new System.EventHandler(this.replaceBtn_Click);
             // 
             // settingBtn
@@ -349,6 +359,8 @@ namespace Draft
             this.settingBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.settingBtn.TabIndex = 10;
             this.settingBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.settingBtn, "Setting (command: \"setting\")");
+            this.settingBtn.Visible = false;
             // 
             // helpBtn
             // 
@@ -361,6 +373,8 @@ namespace Draft
             this.helpBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.helpBtn.TabIndex = 11;
             this.helpBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.helpBtn, "Help (command: \"help\")");
+            this.helpBtn.Visible = false;
             // 
             // feedbackBtn
             // 
@@ -373,6 +387,8 @@ namespace Draft
             this.feedbackBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.feedbackBtn.TabIndex = 12;
             this.feedbackBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.feedbackBtn, "Feedback (command: \"fb\")");
+            this.feedbackBtn.Visible = false;
             // 
             // flowLayoutPanel2
             // 
@@ -400,6 +416,7 @@ namespace Draft
             this.toggleDebugBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.toggleDebugBtn.TabIndex = 3;
             this.toggleDebugBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.toggleDebugBtn, "Toggle input, output boxes (shortcut: Ctrl+`, command: \"std\")");
             this.toggleDebugBtn.Click += new System.EventHandler(this.toggleDebugBtn_Click);
             // 
             // toggleEasyModeBtn
@@ -414,6 +431,7 @@ namespace Draft
             this.toggleEasyModeBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.toggleEasyModeBtn.TabIndex = 3;
             this.toggleEasyModeBtn.TabStop = false;
+            this.toggleEasyModeBtn.Visible = false;
             // 
             // toggleInternalModeBtn
             // 
@@ -427,6 +445,7 @@ namespace Draft
             this.toggleInternalModeBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.toggleInternalModeBtn.TabIndex = 3;
             this.toggleInternalModeBtn.TabStop = false;
+            this.buttonToolTip.SetToolTip(this.toggleInternalModeBtn, "Toggle pre-input mode (shortcut: Ctrl+P, command: \"spoj\")");
             this.toggleInternalModeBtn.Click += new System.EventHandler(this.toggleInternalModeBtn_Click);
             // 
             // title
@@ -512,6 +531,7 @@ namespace Draft
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.PictureBox toggleEasyModeBtn;
         private System.Windows.Forms.PictureBox toggleInternalModeBtn;
+        private System.Windows.Forms.ToolTip buttonToolTip;
     }
 }
 

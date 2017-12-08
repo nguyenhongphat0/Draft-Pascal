@@ -9,6 +9,61 @@ namespace Draft
 {
     public partial class MainForm : MaterialForm
     {
+        private void TextField_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                switch (commandBar.textField.Text.ToLower())
+                {
+                    case "load":
+                        loadBtn_Click(null, null);
+                        break;
+
+                    case "save":
+                        saveBtn_Click(null, null);
+                        break;
+
+                    case "new":
+                        newBtn_Click(null, null);
+                        break;
+
+                    case "close":
+                        Close();
+                        break;
+
+                    case "go":
+                        go();
+                        break;
+
+                    case "stop":
+                        stop();
+                        break;
+
+                    case "saveas":
+                        saveAs();
+                        break;
+
+                    case "build":
+                        build();
+                        break;
+
+                    case "spoj":
+                        toggleInternalMode();
+                        break;
+
+                    case "std":
+                        toggleDebugBox();
+                        break;
+
+                    default:
+                        break;
+                }
+
+                e.SuppressKeyPress = true;
+                fileManager.currentFile.focus();
+            }
+        }
+
         public void go()
         {
             if (executeThread != null && executeThread.IsAlive) stop();
@@ -50,9 +105,16 @@ namespace Draft
 
         public void stop()
         {
-            executeThread.Abort();
-            executeProcess.Kill();
-            toEditorMode();
+            try
+            {
+                executeThread.Abort();
+                executeProcess.Kill();
+                toEditorMode();
+            }
+            catch
+            {
+
+            }
         }
 
         public void build()

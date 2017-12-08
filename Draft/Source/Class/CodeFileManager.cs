@@ -15,7 +15,7 @@ namespace Draft
     {
         public static string managerFile = "manager";
         public static string virtualFilePrefix = Path.GetTempPath() + "draft\\";
-        public static string mingwPath = "C:\\Program Files (x86)\\Dev-Cpp\\MinGW64\\bin\\";
+        public static string mingwPath = "C:\\MinGW\\bin\\";
 
         public CodeFile currentFile;
         public List<CodeFile> openedFiles;

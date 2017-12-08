@@ -39,41 +39,6 @@ namespace Draft
             stopBtn.Visible = false;
         }
 
-		private void TextField_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Enter)
-			{
-				switch (commandBar.textField.Text)
-				{
-					case "load":
-                        loadBtn_Click(null, null);
-						break;
-
-                    case "save":
-                        saveBtn_Click(null, null);
-                        break;
-
-                    case "new":
-                        newBtn_Click(null, null);
-                        break;
-
-                    case "close":
-						Close();
-						break;
-
-                    case "go":
-                        go();
-                        break;
-
-                    default:
-						break;
-				}
-                
-				e.SuppressKeyPress = true;
-				fileManager.currentFile.focus();
-			}
-		}
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             activeForm = this;
@@ -116,9 +81,21 @@ namespace Draft
                 {
                     fileManager.loadFile();
                 }
+                else if (e.KeyCode == Keys.F9)
+                {
+                    go();
+                }
+                else if (e.KeyCode == Keys.F8)
+                {
+                    stop();
+                }
                 else if (e.KeyCode == Keys.Oemtilde)
                 {
                     toggleDebugBox();
+                }
+                else if (e.KeyCode == Keys.P)
+                {
+                    toggleInternalMode();
                 }
                 else if (e.KeyCode == Keys.ControlKey)
                 {
