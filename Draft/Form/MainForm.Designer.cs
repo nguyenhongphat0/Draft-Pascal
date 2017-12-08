@@ -374,7 +374,7 @@ namespace Draft
             this.helpBtn.TabIndex = 11;
             this.helpBtn.TabStop = false;
             this.buttonToolTip.SetToolTip(this.helpBtn, "Help (command: \"help\")");
-            this.helpBtn.Visible = false;
+            this.helpBtn.Click += new System.EventHandler(this.helpBtn_Click);
             // 
             // feedbackBtn
             // 

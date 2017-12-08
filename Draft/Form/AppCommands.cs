@@ -55,6 +55,14 @@ namespace Draft
                         toggleDebugBox();
                         break;
 
+                    case "helloworld":
+                        fileManager.currentFile.editor.Text = "// Hello, Welcome to Draft - a tool that help you learn how to code C without painful!\n// This is your first program. Click the play button on the status bar to run it!\n\n#include <stdio.h>\n\nint main() {\n\tprintf(\"Hello World!\");\n\tgetchar();\n}\n";
+                        break;
+
+                    case "help":
+                        help();
+                        break;
+
                     default:
                         break;
                 }
@@ -142,6 +150,11 @@ namespace Draft
                 fileManager.currentFile.realPath = sfd.FileName;
                 fileManager.currentFile.save();
             }
+        }
+
+        public void help()
+        {
+            MessageBox.Show(this, "Available commands:\ngo -> Run code\nstop -> Stop executing\nbuild -> Compile code to exe file\nsaveas -> Save as\nspoj -> Toggle pre-input mode\nstd -> Toggle input, output box\nnew -> New draft\nsave -> Save current file\nload -> Load file\nclose -> Close program\nhelloworld -> Hello World program\nhelp -> Show this dialog", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

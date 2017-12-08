@@ -184,5 +184,10 @@ namespace Draft
         {
             fileManager.currentFile.editor.ShowReplaceDialog();
         }
+
+        private void helpBtn_Click(object sender, EventArgs e)
+        {
+            help();
+        }
     }
 }

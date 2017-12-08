@@ -4,7 +4,6 @@ C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\bin\D
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\bin\Debug\FastColoredTextBox.dll
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\bin\Debug\MaterialSkin.dll
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\bin\Debug\FastColoredTextBox.xml
-C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\Debug\Draft.csprojResolveAssemblyReference.cache
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\Debug\Draft.ConsoleBox.resources
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\Debug\Draft.CommandBar.resources
 C:\Users\nguyenhongphat0\Documents\Visual Studio 2015\Projects\Draft\Draft\obj\Debug\Draft.IDEBox.resources
