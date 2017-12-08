@@ -13,8 +13,14 @@ namespace Draft
 {
     public class CodeFileManager
     {
-        public static string managerFile = "manager";
         public static string virtualFilePrefix = Path.GetTempPath() + "draft\\";
+        public static string managerFile
+        {
+            get
+            {
+                return virtualFilePrefix + "manager";
+            }
+        }
         public static string mingwPath = "C:\\MinGW\\bin\\";
 
         public CodeFile currentFile;

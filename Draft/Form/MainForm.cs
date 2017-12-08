@@ -25,18 +25,20 @@ namespace Draft
         public ConsoleBox inputBox;
         public ConsoleBox outputBox;
         public Process executeProcess;
+        public string[] args;
 
         bool isSafeMode = false;
         bool isInternalMode = false;
         bool isDebugShowed = false;
 
-        public MainForm()
+        public MainForm(string[] args)
 		{
 			InitializeComponent();
             addScrollBar();
             loadTheme();
             loadConsoleBox();
             stopBtn.Visible = false;
+            this.args = args;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -45,6 +47,10 @@ namespace Draft
             loadLastState();
             fileManager = new CodeFileManager();
             fileManager.import();
+            foreach (var f in args)
+            {
+                fileManager.loadFile(f);
+            }
         }
         
         private void saveBtn_Click(object sender, EventArgs e)
