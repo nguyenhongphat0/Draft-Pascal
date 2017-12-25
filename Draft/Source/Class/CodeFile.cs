@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace DraftPascal
@@ -58,6 +59,25 @@ namespace DraftPascal
         {
             editor = new IDEBox();
             editor.Language = Language.Custom;
+            editor.AutoIndentNeeded += (Object sender, AutoIndentEventArgs e) =>
+            {
+                if (e.LineText.Trim().ToLower() == "begin")
+                {
+                    e.ShiftNextLines = e.TabLength;
+                    return;
+                }
+                if (Regex.IsMatch(e.LineText.Trim().ToLower(), @"end(;|.)"))
+                {
+                    e.Shift = -e.TabLength;
+                    e.ShiftNextLines = -e.TabLength;
+                    return;
+                }
+                if (Regex.IsMatch(e.PrevLineText.ToLower(), @"\b(do|then|else)\b") && !Regex.IsMatch(e.PrevLineText.ToLower(), @"\b(begin)\b"))
+                {
+                    e.Shift = e.TabLength;
+                    return;
+                }
+            };
             switch (getExtension())
             {
                 case ".pas":
