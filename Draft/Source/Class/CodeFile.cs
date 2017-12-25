@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Draft
+namespace DraftPascal
 {
     public class CodeFile
     {
@@ -57,30 +57,14 @@ namespace Draft
         public void bindToView()
         {
             editor = new IDEBox();
+            editor.Language = Language.Custom;
             switch (getExtension())
             {
-                case ".c":
-                case ".cpp":
-                case ".cs":
-                    editor.Language = Language.CSharp;
-                    break;
-                case ".html":
-                    editor.Language = Language.HTML;
-                    break;
-                case ".js":
-                    editor.Language = Language.JS;
-                    break;
-                case ".xml":
-                    editor.Language = Language.XML;
-                    break;
-                case ".php":
-                    editor.Language = Language.PHP;
-                    break;
-                case ".sql":
-                    editor.Language = Language.SQL;
+                case ".pas":
+                    editor.DescriptionFile = "syntax\\" + Properties.Settings.Default.SyntaxHighlightColor;
                     break;
                 default:
-                    editor.Language = Language.Custom;
+                    editor.DescriptionFile = null;
                     break;
             }
             editor.Text = File.ReadAllText(virtualPath);
@@ -140,7 +124,7 @@ namespace Draft
             }
         }
 
-        void Button_MouseUp(object sender, MouseEventArgs e)
+        private void Button_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -166,6 +150,11 @@ namespace Draft
         {
             editor.BringToFront();
             updateView();
+        }
+
+        public void close()
+        {
+            MainForm.fileManager.removeFile(this);
         }
 
         public void save()
@@ -207,23 +196,26 @@ namespace Draft
         {
             try
             {
-                Process p = SystemCommand.init(SystemCommand.mingw(), "-std=c99 " + this.getFilename(false));
+                Process p = SystemCommand.init(SystemCommand.fpc(), this.getFilename(false));
                 p.Start();
                 p.WaitForExit();
                 string output = p.StandardOutput.ReadToEnd();
                 string error = p.StandardError.ReadToEnd();
-                log.textField.Text = StringGenerator.beautify(error + output, this.getFilename(false));
-                if (error == "" && output == "") return true;
-                else return false;
+                if (p.ExitCode == 0) return true;
+                else
+                {
+                    log.textField.Text = StringGenerator.beautify(error + output, this.getFilename(false));
+                    return false;
+                }
             }
             catch (Exception)
             {
-                MessageBox.Show(MainForm.activeForm, "MinGW could not be found on your computer! Please visit our homepage for the resolution", "Compile error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(MainForm.activeForm, "FPC could not be found on your computer! Please visit our homepage for the resolution", "Compile error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return realPath + "|" + virtualPath + "|" + isSaved + "|" + isModified;
         }

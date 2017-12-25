@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Draft
+namespace DraftPascal
 {
     public class CodeFileManager
     {
@@ -21,7 +21,6 @@ namespace Draft
                 return virtualFilePrefix + "manager";
             }
         }
-        public static string mingwPath = "C:\\MinGW\\bin\\";
 
         public CodeFile currentFile;
         public List<CodeFile> openedFiles;

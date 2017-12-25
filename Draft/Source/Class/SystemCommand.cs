@@ -6,13 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Draft
+namespace DraftPascal
 {
     class SystemCommand
     {
-        public static string mingw()
+        public static string fpcPath = "C:\\FPC\\bin\\i386-win32\\";
+
+        public static string fpc()
         {
-            return CodeFileManager.mingwPath + "gcc.exe";
+            return fpcPath + "fpc.exe";
         }
 
         public static void go(string command, string param)

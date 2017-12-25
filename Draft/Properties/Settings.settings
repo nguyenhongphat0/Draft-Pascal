@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Draft.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DraftPascal.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Location" Type="System.Drawing.Point" Scope="User">
@@ -13,6 +13,9 @@
     </Setting>
     <Setting Name="Minimized" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SyntaxHighlightColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">default.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

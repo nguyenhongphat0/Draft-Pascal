@@ -1,6 +1,6 @@
 ﻿using FastColoredTextBoxNS;
 
-namespace Draft
+namespace DraftPascal
 {
 	partial class MainForm
 	{
@@ -239,7 +239,7 @@ namespace Draft
             // runBtn
             // 
             this.runBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.runBtn.Image = global::Draft.Properties.Resources.run;
+            this.runBtn.Image = global::DraftPascal.Properties.Resources.run;
             this.runBtn.Location = new System.Drawing.Point(2, 2);
             this.runBtn.Margin = new System.Windows.Forms.Padding(0);
             this.runBtn.Name = "runBtn";
@@ -253,7 +253,7 @@ namespace Draft
             // stopBtn
             // 
             this.stopBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.stopBtn.Image = global::Draft.Properties.Resources.stop;
+            this.stopBtn.Image = global::DraftPascal.Properties.Resources.stop;
             this.stopBtn.Location = new System.Drawing.Point(27, 2);
             this.stopBtn.Margin = new System.Windows.Forms.Padding(0);
             this.stopBtn.Name = "stopBtn";
@@ -267,7 +267,7 @@ namespace Draft
             // buildBtn
             // 
             this.buildBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buildBtn.Image = global::Draft.Properties.Resources.compile;
+            this.buildBtn.Image = global::DraftPascal.Properties.Resources.compile;
             this.buildBtn.Location = new System.Drawing.Point(52, 2);
             this.buildBtn.Margin = new System.Windows.Forms.Padding(0);
             this.buildBtn.Name = "buildBtn";
@@ -281,7 +281,7 @@ namespace Draft
             // saveAsBtn
             // 
             this.saveAsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveAsBtn.Image = global::Draft.Properties.Resources.saveas;
+            this.saveAsBtn.Image = global::DraftPascal.Properties.Resources.saveas;
             this.saveAsBtn.Location = new System.Drawing.Point(77, 2);
             this.saveAsBtn.Margin = new System.Windows.Forms.Padding(0);
             this.saveAsBtn.Name = "saveAsBtn";
@@ -295,7 +295,7 @@ namespace Draft
             // undoBtn
             // 
             this.undoBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.undoBtn.Image = global::Draft.Properties.Resources.undo;
+            this.undoBtn.Image = global::DraftPascal.Properties.Resources.undo;
             this.undoBtn.Location = new System.Drawing.Point(102, 2);
             this.undoBtn.Margin = new System.Windows.Forms.Padding(0);
             this.undoBtn.Name = "undoBtn";
@@ -309,7 +309,7 @@ namespace Draft
             // redoBtn
             // 
             this.redoBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.redoBtn.Image = global::Draft.Properties.Resources.redo;
+            this.redoBtn.Image = global::DraftPascal.Properties.Resources.redo;
             this.redoBtn.Location = new System.Drawing.Point(127, 2);
             this.redoBtn.Margin = new System.Windows.Forms.Padding(0);
             this.redoBtn.Name = "redoBtn";
@@ -323,7 +323,7 @@ namespace Draft
             // findBtn
             // 
             this.findBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.findBtn.Image = global::Draft.Properties.Resources.find;
+            this.findBtn.Image = global::DraftPascal.Properties.Resources.find;
             this.findBtn.Location = new System.Drawing.Point(152, 2);
             this.findBtn.Margin = new System.Windows.Forms.Padding(0);
             this.findBtn.Name = "findBtn";
@@ -337,7 +337,7 @@ namespace Draft
             // replaceBtn
             // 
             this.replaceBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.replaceBtn.Image = global::Draft.Properties.Resources.replace;
+            this.replaceBtn.Image = global::DraftPascal.Properties.Resources.replace;
             this.replaceBtn.Location = new System.Drawing.Point(177, 2);
             this.replaceBtn.Margin = new System.Windows.Forms.Padding(0);
             this.replaceBtn.Name = "replaceBtn";
@@ -351,7 +351,7 @@ namespace Draft
             // settingBtn
             // 
             this.settingBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingBtn.Image = global::Draft.Properties.Resources.setting;
+            this.settingBtn.Image = global::DraftPascal.Properties.Resources.setting;
             this.settingBtn.Location = new System.Drawing.Point(202, 2);
             this.settingBtn.Margin = new System.Windows.Forms.Padding(0);
             this.settingBtn.Name = "settingBtn";
@@ -365,7 +365,7 @@ namespace Draft
             // helpBtn
             // 
             this.helpBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.helpBtn.Image = global::Draft.Properties.Resources.help;
+            this.helpBtn.Image = global::DraftPascal.Properties.Resources.help;
             this.helpBtn.Location = new System.Drawing.Point(227, 2);
             this.helpBtn.Margin = new System.Windows.Forms.Padding(0);
             this.helpBtn.Name = "helpBtn";
@@ -379,7 +379,7 @@ namespace Draft
             // feedbackBtn
             // 
             this.feedbackBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.feedbackBtn.Image = global::Draft.Properties.Resources.feedback;
+            this.feedbackBtn.Image = global::DraftPascal.Properties.Resources.feedback;
             this.feedbackBtn.Location = new System.Drawing.Point(252, 2);
             this.feedbackBtn.Margin = new System.Windows.Forms.Padding(0);
             this.feedbackBtn.Name = "feedbackBtn";
@@ -407,7 +407,7 @@ namespace Draft
             // toggleDebugBtn
             // 
             this.toggleDebugBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toggleDebugBtn.Image = global::Draft.Properties.Resources.debug;
+            this.toggleDebugBtn.Image = global::DraftPascal.Properties.Resources.debug;
             this.toggleDebugBtn.Location = new System.Drawing.Point(583, 0);
             this.toggleDebugBtn.Margin = new System.Windows.Forms.Padding(0);
             this.toggleDebugBtn.Name = "toggleDebugBtn";
@@ -422,7 +422,7 @@ namespace Draft
             // toggleEasyModeBtn
             // 
             this.toggleEasyModeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toggleEasyModeBtn.Image = global::Draft.Properties.Resources.braces;
+            this.toggleEasyModeBtn.Image = global::DraftPascal.Properties.Resources.braces;
             this.toggleEasyModeBtn.Location = new System.Drawing.Point(555, 0);
             this.toggleEasyModeBtn.Margin = new System.Windows.Forms.Padding(0);
             this.toggleEasyModeBtn.Name = "toggleEasyModeBtn";
@@ -436,7 +436,7 @@ namespace Draft
             // toggleInternalModeBtn
             // 
             this.toggleInternalModeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toggleInternalModeBtn.Image = global::Draft.Properties.Resources.windows;
+            this.toggleInternalModeBtn.Image = global::DraftPascal.Properties.Resources.windows;
             this.toggleInternalModeBtn.Location = new System.Drawing.Point(527, 0);
             this.toggleInternalModeBtn.Margin = new System.Windows.Forms.Padding(0);
             this.toggleInternalModeBtn.Name = "toggleInternalModeBtn";

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Draft.Properties {
+namespace DraftPascal.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -68,6 +68,18 @@ namespace Draft.Properties {
             }
             set {
                 this["Minimized"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("default.xml")]
+        public string SyntaxHighlightColor {
+            get {
+                return ((string)(this["SyntaxHighlightColor"]));
+            }
+            set {
+                this["SyntaxHighlightColor"] = value;
             }
         }
     }

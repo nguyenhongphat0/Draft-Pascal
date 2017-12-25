@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Draft
+namespace DraftPascal
 {
 	public partial class CommandBar : UserControl
 	{

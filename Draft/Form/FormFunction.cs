@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using MaterialSkin;
 
-namespace Draft
+namespace DraftPascal
 {
     public partial class MainForm : MaterialForm
     {
@@ -120,6 +120,10 @@ namespace Draft
             {
                 Location = Properties.Settings.Default.Location;
                 Size = Properties.Settings.Default.Size;
+            }
+            if (Properties.Settings.Default.SyntaxHighlightColor == null)
+            {
+                Properties.Settings.Default.SyntaxHighlightColor = "default.xml";
             }
         }
 

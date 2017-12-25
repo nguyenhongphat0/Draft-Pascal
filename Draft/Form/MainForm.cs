@@ -7,7 +7,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.IO;
 
-namespace Draft
+namespace DraftPascal
 {
     public partial class MainForm : MaterialForm
     {
@@ -83,9 +83,17 @@ namespace Draft
                 {
                     commandBar.Focus();
                 }
+                else if (e.KeyCode == Keys.N)
+                {
+                    fileManager.newFile();
+                }
                 else if (e.KeyCode == Keys.O)
                 {
                     fileManager.loadFile();
+                }
+                else if (e.KeyCode == Keys.W)
+                {
+                    fileManager.currentFile.close();
                 }
                 else if (e.KeyCode == Keys.F9)
                 {

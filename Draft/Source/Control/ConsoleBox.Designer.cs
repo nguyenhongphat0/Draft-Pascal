@@ -1,4 +1,4 @@
-﻿namespace Draft
+﻿namespace DraftPascal
 {
     partial class ConsoleBox
     {

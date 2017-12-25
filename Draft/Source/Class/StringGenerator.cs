@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Draft
+namespace DraftPascal
 {
     class StringGenerator
     {
@@ -22,7 +22,7 @@ namespace Draft
 
         public static string aRandomFile(string basefile, string prefix)
         {
-            string extension = ".c";
+            string extension = ".pas";
             if (basefile != null)
             {
                 FileInfo fi = new FileInfo(basefile);
@@ -34,6 +34,11 @@ namespace Draft
                 s = prefix + aRandomString(10) + extension;
             } while (File.Exists(s));
             return s;
+        }
+
+        public static string getBaseName(string fullname)
+        {
+            return Path.GetFileNameWithoutExtension(fullname);
         }
 
         public static string beautify(string std, string filePath)

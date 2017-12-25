@@ -5,7 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Draft
+namespace DraftPascal
 {
     public partial class MainForm : MaterialForm
     {
@@ -81,7 +81,7 @@ namespace Draft
                 toRunMode();
                 if (isInternalMode)
                 {
-                    executeProcess = SystemCommand.init(CodeFileManager.virtualFilePrefix + "a.exe", "");
+                    executeProcess = SystemCommand.init(CodeFileManager.virtualFilePrefix + StringGenerator.getBaseName(fileManager.currentFile.getFilename(false)) + ".exe", "");
                     executeProcess.Start();
                     executeThread = new Thread(new ThreadStart(() =>
                     {
@@ -100,7 +100,7 @@ namespace Draft
                 }
                 else
                 {
-                    SystemCommand.go("a.exe", "");
+                    SystemCommand.go(CodeFileManager.virtualFilePrefix + StringGenerator.getBaseName(fileManager.currentFile.getFilename(false)) + ".exe", "");
                     toEditorMode();
                 }
             }

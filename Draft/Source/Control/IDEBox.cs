@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Draft
+namespace DraftPascal
 {
     public partial class IDEBox : FastColoredTextBoxNS.FastColoredTextBox
     {
