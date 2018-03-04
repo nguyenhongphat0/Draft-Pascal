@@ -89,11 +89,12 @@ namespace DraftPascal
                         executeProcess.WaitForExit();
                         string output = executeProcess.StandardOutput.ReadToEnd();
                         string error = executeProcess.StandardError.ReadToEnd();
+                        string time = "\nProgram executed in " + executeProcess.TotalProcessorTime.TotalSeconds + "s";
                         this.Invoke(new SafeSetText((string text, TextBox textbox) =>
                         {
                             textbox.Text = text;
                             toEditorMode();
-                        }), error + output, outputBox.textField);
+                        }), error + output + time, outputBox.textField);
                     }));
                     executeThread.IsBackground = true;
                     executeThread.Start();
