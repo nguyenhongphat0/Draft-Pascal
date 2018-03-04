@@ -1,0 +1,12 @@
+;The comment below contains SFX script commands
+
+Path=%temp%
+Setup=7za x "Draft Pascal.7z" -y -o"C:\Program Files\"
+Setup=7za x "FPC.7z" -y -o"C:\"
+TempMode="Do you want to install Draft Pascal on your computer? Click Yes to begin the installation or No to quit.","Confirm"
+Title=Installing Draft Pascal
+Text
+{
+Wait a minute and application will be ready to use!
+}
+Shortcut=D, "C:\Program Files\Draft Pascal\DraftPascal.exe", , , Draft Pascal, 

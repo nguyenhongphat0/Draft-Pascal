@@ -130,7 +130,7 @@ namespace DraftPascal
             {
                 File.Create(managerFile).Close();
                 newFile();
-                currentFile.editor.Text = "{ Hello, Welcome to Draft Pascal - a tool that help you code Pascal without painful! }\n{ This is your first program. Click the play button on the status bar to run it! }\n\nuses crt;\n\nbegin\n\twriteln('Hello World!');\n\treadln();\nend.\n";
+                currentFile.editor.Text = "{ Hello, Welcome to Draft Pascal! }\n{ This is your first program. }\n{ Click the play button to run it }\n\nuses crt;\nbegin\n\twriteln('Hello World!');\n\treadln();\nend.\n";
             }
             else
             {

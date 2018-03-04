@@ -38,14 +38,13 @@
     "?<range>:)\\s*(?<range>[^;]+);\n";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScrollMinSize = new System.Drawing.Size(39, 34);
+            this.AutoScrollMinSize = new System.Drawing.Size(37, 33);
             this.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.CaretBlinking = false;
             this.CaretColor = System.Drawing.Color.Teal;
-            this.CharHeight = 24;
-            this.CharWidth = 9;
+            this.CharHeight = 23;
             this.CurrentLineColor = System.Drawing.Color.Gray;
-            this.Font = new System.Drawing.Font("Lucida Console", 11F);
+            this.Font = new System.Drawing.Font("Lucida Console", 10F);
             this.IndentBackColor = System.Drawing.Color.White;
             this.Language = FastColoredTextBoxNS.Language.CSharp;
             this.LeftBracket = '(';
