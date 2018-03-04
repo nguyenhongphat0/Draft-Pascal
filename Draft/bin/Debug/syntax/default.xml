@@ -1,11 +1,17 @@
 <doc>
     <brackets left="&lt;" right="&gt;" />
-    <style name="Maroon" color="Maroon" fontStyle="Bold,Italic" />
-    <style name="Blue" color="Blue"/>
-    <style name="Green" color="Green"/>
-    <style name="Red" color="Red" fontStyle="Bold" />
-    <rule style="Red">begin|end</rule>
-    <rule style="Blue">program|uses|var|for|to|do|while|if|then|else|switch|case</rule>
-    <rule style="Green" options="Multiline">{.*}</rule>
+    <style name="Comment" color="#B5B5B5"/>
+    <style name="String" color="#E56286"/>
+    <style name="Normal" color="Black"/>
+    <style name="Operator" color="#E56286"/>
+    <style name="Function" color="#7B8DCD"/>
+    <style name="Keyword" color="#C978C8" fontStyle="Bold"/>
+    <rule style="Function">(\w|\d)*\(|\)|\[|\]</rule>
+    <rule style="Keyword">program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function</rule>
+    <rule style="Normal">(\w|\d)+(program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function)</rule>
+    <rule style="Normal">(program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function)(\w|\d)+</rule>
+    <rule style="String">'.*'</rule>
+    <rule style="Operator">\+|-|\*|/|=|:=|&lt;|&gt;</rule>
+    <rule style="Comment" options="Multiline">{.*}</rule>
     <folding start="&lt;div" finish="&lt;/div&gt;" options="IgnoreCase"/>
 </doc>
