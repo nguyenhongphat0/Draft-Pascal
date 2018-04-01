@@ -144,7 +144,7 @@ namespace DraftPascal
         public void saveAs()
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "C files|*.c|All files|*.*";
+            sfd.Filter = "PAS files|*.pas|All files|*.*";
             sfd.Title = "Save as";
             if (sfd.ShowDialog() == DialogResult.OK)
             {

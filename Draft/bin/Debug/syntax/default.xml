@@ -7,9 +7,9 @@
     <style name="Function" color="#7B8DCD"/>
     <style name="Keyword" color="#C978C8" fontStyle="Bold"/>
     <rule style="Function">(\w|\d)*\(|\)|\[|\]</rule>
-    <rule style="Keyword">program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function</rule>
-    <rule style="Normal">(\w|\d)+(program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function)</rule>
-    <rule style="Normal">(program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function)(\w|\d)+</rule>
+    <rule style="Keyword" options="IgnoreCase">program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function</rule>
+    <rule style="Normal" options="IgnoreCase">(\w|\d)+(program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function)</rule>
+    <rule style="Normal" options="IgnoreCase">(program|uses|var|const|type|for|to|do|while|if|then|else|switch|case|begin|end|array|of|procedure|function)(\w|\d)+</rule>
     <rule style="String">'.*'</rule>
     <rule style="Operator">\+|-|\*|/|=|:=|&lt;|&gt;</rule>
     <rule style="Comment" options="Multiline">{.*}</rule>

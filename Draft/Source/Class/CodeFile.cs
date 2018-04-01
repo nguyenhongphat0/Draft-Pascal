@@ -189,6 +189,7 @@ namespace DraftPascal
             else
             {
                 SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PAS files|*.pas|All files|*.*";
                 sfd.Title = "Save file to";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
